@@ -121,7 +121,7 @@ di/             Hilt modules and entry points
 - Kotlin 2.4, AGP 9.2.1, Gradle 9.6
 - `compileSdk 36`, `minSdk 26`, `targetSdk 35`
 - Jetpack Compose (BOM 2026.06.00) + Material 3, Jetpack Glance 1.1.1
-- Hilt 2.60 with KSP 2.3.9
+- Hilt 2.60 with KSP 2.3.10
 - AndroidX Lifecycle 2.10, Activity 1.13, DataStore 1.2, WorkManager 2.11
 - Dependencies are managed through the `gradle/libs.versions.toml` version catalog
 
