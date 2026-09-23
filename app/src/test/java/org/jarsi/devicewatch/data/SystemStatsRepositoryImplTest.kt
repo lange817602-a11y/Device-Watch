@@ -31,7 +31,7 @@ class SystemStatsRepositoryImplTest {
                 sdkInt = android.os.Build.VERSION_CODES.N,
             )
         )
-            .isEqualTo(R.string.security_encryption_enabled)
+            .isEqualTo(R.string.security_encryption_default_key)
         assertThat(storageEncryptionStatusTextRes(DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE))
             .isEqualTo(R.string.security_encryption_disabled)
         assertThat(storageEncryptionStatusTextRes(DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED))
