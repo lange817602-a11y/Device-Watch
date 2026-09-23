@@ -258,15 +258,14 @@ class SystemStatsRepositoryImpl @Inject constructor(
     private fun readStorageEncryption(): String {
         val devicePolicyManager = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as? DevicePolicyManager
             ?: return UNAVAILABLE_TEXT
-        return when (devicePolicyManager.storageEncryptionStatus) {
-            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE,
-            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> context.getString(R.string.security_encryption_enabled)
-            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY -> context.getString(R.string.security_encryption_default_key)
-            DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> context.getString(R.string.security_encryption_disabled)
-            DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED -> context.getString(R.string.common_unsupported)
-            DevicePolicyManager.ENCRYPTION_STATUS_UNKNOWN -> context.getString(R.string.common_unknown)
-            else -> context.getString(R.string.common_unknown)
+        val status = try {
+            devicePolicyManager.storageEncryptionStatus
+        } catch (_: UnsupportedOperationException) {
+            return context.getString(R.string.common_unsupported)
+        } catch (_: RuntimeException) {
+            return context.getString(R.string.common_unknown)
         }
+        return context.getString(storageEncryptionStatusTextRes(status))
     }
 
     private fun readUsbDebugging(): String =
@@ -1229,4 +1228,14 @@ class SystemStatsRepositoryImpl @Inject constructor(
     private companion object {
         private const val GB_BYTES = 1024.0 * 1024.0 * 1024.0
     }
+}
+
+internal fun storageEncryptionStatusTextRes(status: Int): Int = when (status) {
+    DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE,
+    DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> R.string.security_encryption_enabled
+    DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY -> R.string.security_encryption_default_key
+    DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> R.string.security_encryption_disabled
+    DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED -> R.string.common_unsupported
+    DevicePolicyManager.ENCRYPTION_STATUS_UNKNOWN -> R.string.common_unknown
+    else -> R.string.common_unknown
 }
