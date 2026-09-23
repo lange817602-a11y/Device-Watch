@@ -1233,7 +1233,8 @@ class SystemStatsRepositoryImpl @Inject constructor(
 internal fun storageEncryptionStatusTextRes(status: Int, sdkInt: Int = Build.VERSION.SDK_INT): Int = when {
     sdkInt >= Build.VERSION_CODES.N && status == ENCRYPTION_STATUS_ACTIVE_PER_USER_VALUE ->
         R.string.security_encryption_per_user
-    sdkInt >= Build.VERSION_CODES.LOLLIPOP_MR1 && status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY ->
+    sdkInt in Build.VERSION_CODES.LOLLIPOP_MR1 until Build.VERSION_CODES.N &&
+        status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY ->
         R.string.security_encryption_default_key
     status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE -> R.string.security_encryption_enabled
     status == DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> R.string.security_encryption_disabled
