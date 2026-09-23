@@ -108,6 +108,7 @@ dependencies {
 
     // Preferences DataStore for widget state
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.bugfender.android)
 
     // Dependency Injection (Hilt)
     implementation(libs.hilt.android)

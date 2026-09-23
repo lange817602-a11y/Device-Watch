@@ -6,7 +6,9 @@ Device Watch (`org.jarsi.devicewatch`) is a device monitoring app developed by J
 
 ## The short version
 
-**Device Watch does not collect, store, or transmit any personal data off your device.** The app has no `INTERNET` permission, so it is technically incapable of sending anything anywhere. There are no analytics, no advertising, no tracking, and no third-party SDKs that process data.
+**Device Watch stores its core statistics locally on your device.** The default build does not
+configure remote telemetry, but builds that set `BUGFENDER_APP_KEY` initialize the Bugfender SDK
+and may upload diagnostic logs and crash reports to Bugfender. There are no ads or tracking SDKs.
 
 ## What the app reads and why
 
@@ -21,6 +23,9 @@ To show its statistics, Device Watch reads the following information **locally o
 ## Where the data lives
 
 All statistics (usage history up to 62 days, notification log up to 7 days, charge history) are stored in the app's private storage on your device. They are deleted when you uninstall the app or clear its data. Nothing is uploaded, synced, or backed up to any server by the app.
+
+If a build is configured with Bugfender, diagnostic logs and crash reports may also be transmitted
+to Bugfender's servers for debugging.
 
 ## Changes
 
