@@ -160,7 +160,7 @@ Bugfender support is bundled but disabled by default. To enable it for a local o
 bugfenderAppKey=YOUR_BUGFENDER_APP_KEY
 ```
 
-You can place that entry in your user-level `~/.gradle/gradle.properties` or an untracked local Gradle properties file.
+You can place that entry in your user-level `~/.gradle/gradle.properties`, pass it with `-PbugfenderAppKey=...`, or provide it in CI as `ORG_GRADLE_PROJECT_bugfenderAppKey`.
 
 ## Building
 
