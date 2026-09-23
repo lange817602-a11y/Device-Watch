@@ -197,6 +197,7 @@
     <string name="security_storage_encryption">Tallennustilan salaus</string>
     <string name="security_usb_debugging">USB-virheenkorjaus</string>
     <string name="security_encryption_enabled">Salattu</string>
+    <string name="security_encryption_default_key">Salattu (oletusavain)</string>
     <string name="security_encryption_disabled">Ei salattu</string>
 
     <string name="camera_info_section">KAMERAT</string>

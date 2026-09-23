@@ -260,8 +260,8 @@ class SystemStatsRepositoryImpl @Inject constructor(
             ?: return UNAVAILABLE_TEXT
         return when (devicePolicyManager.storageEncryptionStatus) {
             DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE,
-            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY,
             DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> context.getString(R.string.security_encryption_enabled)
+            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY -> context.getString(R.string.security_encryption_default_key)
             DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> context.getString(R.string.security_encryption_disabled)
             DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED -> context.getString(R.string.common_unsupported)
             DevicePolicyManager.ENCRYPTION_STATUS_UNKNOWN -> context.getString(R.string.common_unknown)

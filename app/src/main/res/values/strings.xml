@@ -199,6 +199,7 @@
     <string name="security_storage_encryption">Storage encryption</string>
     <string name="security_usb_debugging">USB debugging</string>
     <string name="security_encryption_enabled">Encrypted</string>
+    <string name="security_encryption_default_key">Encrypted (default key)</string>
     <string name="security_encryption_disabled">Not encrypted</string>
 
     <string name="camera_info_section">CAMERAS</string>
