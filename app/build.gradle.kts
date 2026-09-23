@@ -13,6 +13,9 @@ val keystoreProperties = Properties().apply {
         keystorePropertiesFile.inputStream().use(::load)
     }
 }
+val bugfenderAppKey = (providers.gradleProperty("bugfenderAppKey").orNull ?: "")
+    .replace("\\", "\\\\")
+    .replace("\"", "\\\"")
 
 android {
     namespace = "org.jarsi.devicewatch"
@@ -26,6 +29,7 @@ android {
         versionName = "1.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BUGFENDER_APP_KEY", "\"$bugfenderAppKey\"")
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -104,6 +108,7 @@ dependencies {
 
     // Preferences DataStore for widget state
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.bugfender.android)
 
     // Dependency Injection (Hilt)
     implementation(libs.hilt.android)
