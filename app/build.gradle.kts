@@ -13,6 +13,13 @@ val keystoreProperties = Properties().apply {
         keystorePropertiesFile.inputStream().use(::load)
     }
 }
+val bugfenderAppKey = providers.gradleProperty("bugfenderAppKey")
+val bugfenderAppKeyBuildConfigValue = bugfenderAppKey
+    .map { "\"${it.replace("\\", "\\\\").replace("\"", "\\\"")}\"" }
+    .orElse("\"\"")
+val bugfenderEnabledBuildConfigValue = bugfenderAppKey
+    .map { it.isNotBlank().toString() }
+    .orElse("false")
 
 android {
     namespace = "org.jarsi.devicewatch"
@@ -24,6 +31,8 @@ android {
         targetSdk = 35
         versionCode = 17
         versionName = "1.5.0"
+        buildConfigField("String", "BUGFENDER_APP_KEY", bugfenderAppKeyBuildConfigValue.get())
+        buildConfigField("boolean", "BUGFENDER_ENABLED", bugfenderEnabledBuildConfigValue.get())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -109,6 +118,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.bugfender.android)
     // Hilt's generated code references these annotations (Dagger ships them compileOnly).
     compileOnly(libs.errorprone.annotations)
 

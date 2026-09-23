@@ -152,6 +152,16 @@ The app requests only permissions that are used by the current feature set:
 
 Notification counting additionally uses the optional Notification access special permission (a `NotificationListenerService`); counting starts when access is granted. Do Not Disturb and Bluetooth control permissions are not requested.
 
+## Optional Bugfender logging
+
+Bugfender support is bundled but disabled by default. To enable it for a local or CI build, add your app key to a Gradle property that is not committed:
+
+```properties
+bugfenderAppKey=YOUR_BUGFENDER_APP_KEY
+```
+
+You can place that entry in your user-level `~/.gradle/gradle.properties`, pass it with `-PbugfenderAppKey=...`, or provide it in CI as `ORG_GRADLE_PROJECT_bugfenderAppKey`.
+
 ## Building
 
 Use the Gradle wrapper from the repository root:
