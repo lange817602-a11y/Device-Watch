@@ -164,6 +164,10 @@ Use the Gradle wrapper from the repository root:
 .\gradlew.bat :app:assembleRelease
 ```
 
+Optional Gradle project properties can be supplied through environment variables. For example,
+set `ORG_GRADLE_PROJECT_bugfenderAppKey=YOUR_BUGFENDER_APP_KEY` before invoking Gradle to
+populate `BuildConfig.BUGFENDER_APP_KEY`; if it is unset, the build uses an empty string.
+
 Release builds are minified with R8 and resource shrinking. The release APK is unsigned unless a local `keystore.properties` and keystore are present.
 
 ## Testing
