@@ -73,11 +73,11 @@ differs per metric, and the History page states "collected since" for each one:
 
 ## Installation and updates
 
-### F-Droid or the GitHub APK?
+### Where should I download it?
 
-Either. Releases are built reproducibly and F-Droid verifies its own build against the
-developer-signed APK, so both sources ship an APK signed with the same key — you can install from
-one and later update from the other. F-Droid additionally delivers updates automatically.
+Use the latest signed APK from the GitHub Releases page. Releases are built reproducibly, so each
+tagged source maps cleanly to the published APK and later versions install over earlier ones with
+the same signing key.
 
 ### Updating from v1.3.1 or older
 

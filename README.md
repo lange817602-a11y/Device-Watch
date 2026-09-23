@@ -1,8 +1,6 @@
 # Device Watch
 
 [![Latest release](https://img.shields.io/github/v/release/jrs8205/Device-Watch?sort=semver)](https://github.com/jrs8205/Device-Watch/releases/latest)
-[![F-Droid](https://img.shields.io/f-droid/v/org.jarsi.devicewatch)](https://f-droid.org/packages/org.jarsi.devicewatch)
-[![Aptoide](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fws75.aptoide.com%2Fapi%2F7%2Fapp%2FgetMeta%3Fpackage_name%3Dorg.jarsi.devicewatch&query=%24.data.file.vername&label=Aptoide&prefix=v&color=FE6446)](https://device-watch.en.aptoide.com/app)
 [![Downloads](https://img.shields.io/github/downloads/jrs8205/Device-Watch/total)](https://github.com/jrs8205/Device-Watch/releases)
 [![Built with Jetpack Compose](https://img.shields.io/badge/Built%20with-Jetpack%20Compose-4285F4)](https://developer.android.com/jetpack/compose)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
@@ -63,18 +61,12 @@ Every metric is real data read from Android and kernel sources. When a value is 
 
 ## Download
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/org.jarsi.devicewatch)
-[<img src="assets/get-it-on-aptoide.svg" alt="Download from Aptoide" height="80">](https://aptoide-mmp.aptoide.com/api/v1/download?package_name=org.jarsi.devicewatch&oemid=584d342f9e68b0c33244b78f3cc21a24&redirect_url=https%3A%2F%2Fws.catappult.io%2Fapi%2FdirectToConsumer%2Forg.jarsi.devicewatch%2Fdownload)
+[<img src="https://img.shields.io/badge/Download-APK-2ea44f?style=for-the-badge" alt="Download APK" height="28">](https://github.com/jrs8205/Device-Watch/releases/latest)
 
-Device Watch is available on
-[**F-Droid**](https://f-droid.org/packages/org.jarsi.devicewatch), which also delivers updates
-automatically, and on [**Aptoide**](https://device-watch.en.aptoide.com/app), which also offers a
-[direct APK download](https://aptoide-mmp.aptoide.com/api/v1/download?package_name=org.jarsi.devicewatch&oemid=584d342f9e68b0c33244b78f3cc21a24&redirect_url=https%3A%2F%2Fws.catappult.io%2Fapi%2FdirectToConsumer%2Forg.jarsi.devicewatch%2Fdownload).
-Alternatively, download the latest signed APK from the
+Download the latest signed APK from the
 [**Releases**](https://github.com/jrs8205/Device-Watch/releases/latest) page and open it on your
-device to install. Releases are built reproducibly and F-Droid verifies each build against the
-developer-signed APK, so every source ships an APK signed with the same key and later versions
-install cleanly as an update over an existing one — from any source.
+device to install. Releases are built reproducibly, so each tagged source maps cleanly to the
+published APK and later versions install over earlier ones with the same signing key.
 
 > **Upgrading from v1.3.1 or older:** the application ID changed in v1.4.0 from
 > `com.example.modernwidget` to `org.jarsi.devicewatch`, so Android treats it as a new app.
@@ -147,7 +139,7 @@ The app requests only permissions that are used by the current feature set:
 - `NEARBY_WIFI_DEVICES`
 - `READ_PHONE_STATE`
 - `PACKAGE_USAGE_STATS`
-- `QUERY_ALL_PACKAGES` (resolve names/icons for the per-app data list; the app is distributed outside Google Play)
+- `QUERY_ALL_PACKAGES` (resolve names/icons for the per-app data list; the app is distributed directly)
 - `REQUEST_DELETE_PACKAGES` (uninstall from the last-opened list via the system dialog)
 
 Notification counting additionally uses the optional Notification access special permission (a `NotificationListenerService`); counting starts when access is granted. Do Not Disturb and Bluetooth control permissions are not requested.

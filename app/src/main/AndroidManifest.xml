@@ -16,7 +16,7 @@
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
     <!-- Needed to resolve names/icons for arbitrary UIDs reported by NetworkStats and to
-         list launchable apps. The app is distributed outside Google Play. -->
+         list launchable apps. The app is distributed directly. -->
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
