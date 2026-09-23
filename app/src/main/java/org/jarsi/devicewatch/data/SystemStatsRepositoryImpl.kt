@@ -1234,7 +1234,7 @@ internal fun storageEncryptionStatusTextRes(status: Int, sdkInt: Int = Build.VER
     status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE -> R.string.security_encryption_enabled
     sdkInt >= Build.VERSION_CODES.N && status == encryptionStatusActivePerUser() ->
         R.string.security_encryption_per_user
-    sdkInt >= Build.VERSION_CODES.M && status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY ->
+    sdkInt >= Build.VERSION_CODES.LOLLIPOP_MR1 && status == DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY ->
         R.string.security_encryption_default_key
     status == DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> R.string.security_encryption_disabled
     status == DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED -> R.string.common_unsupported
