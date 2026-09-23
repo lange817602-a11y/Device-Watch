@@ -1242,4 +1242,4 @@ internal fun storageEncryptionStatusTextRes(status: Int, sdkInt: Int = Build.VER
     else -> R.string.common_unknown
 }
 
-private const val ENCRYPTION_STATUS_ACTIVE_PER_USER_VALUE = 5
+private const val ENCRYPTION_STATUS_ACTIVE_PER_USER_VALUE = 3
