@@ -14,6 +14,12 @@ val keystoreProperties = Properties().apply {
     }
 }
 val bugfenderAppKey = providers.gradleProperty("bugfenderAppKey")
+val bugfenderAppKeyBuildConfigValue = bugfenderAppKey
+    .map { "\"${it.replace("\\", "\\\\").replace("\"", "\\\"")}\"" }
+    .orElse("\"\"")
+val bugfenderEnabledBuildConfigValue = bugfenderAppKey
+    .map { it.isNotBlank().toString() }
+    .orElse("false")
 
 android {
     namespace = "org.jarsi.devicewatch"
@@ -25,17 +31,8 @@ android {
         targetSdk = 35
         versionCode = 17
         versionName = "1.5.0"
-        val resolvedBugfenderAppKey = bugfenderAppKey.orElse("").get()
-        buildConfigField(
-            "String",
-            "BUGFENDER_APP_KEY",
-            "\"${resolvedBugfenderAppKey.replace("\\", "\\\\").replace("\"", "\\\"")}\""
-        )
-        buildConfigField(
-            "boolean",
-            "BUGFENDER_ENABLED",
-            resolvedBugfenderAppKey.isNotBlank().toString()
-        )
+        buildConfigField("String", "BUGFENDER_APP_KEY", bugfenderAppKeyBuildConfigValue.get())
+        buildConfigField("boolean", "BUGFENDER_ENABLED", bugfenderEnabledBuildConfigValue.get())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
