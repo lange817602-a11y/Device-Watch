@@ -20,6 +20,13 @@ class SystemStatsRepositoryImplTest {
             .isEqualTo(R.string.security_encryption_per_user)
         assertThat(
             storageEncryptionStatusTextRes(
+                status = DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER,
+                sdkInt = android.os.Build.VERSION_CODES.M,
+            )
+        )
+            .isEqualTo(R.string.common_unknown)
+        assertThat(
+            storageEncryptionStatusTextRes(
                 status = DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY,
                 sdkInt = android.os.Build.VERSION_CODES.LOLLIPOP,
             )
