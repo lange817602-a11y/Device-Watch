@@ -190,6 +190,10 @@
     <string name="device_info_battery_tech">Akkutyyppi</string>
     <string name="device_info_battery_capacity">Akun kapasiteetti</string>
     <string name="device_info_boot_count">Käynnistyksiä yhteensä</string>
+    <string name="security_info_section">TIETOTURVA</string>
+    <string name="security_screen_lock">Näytön lukitus asetettu</string>
+    <string name="security_storage_encryption">Tallennustilan salaus</string>
+    <string name="security_usb_debugging">USB-virheenkorjaus</string>
 
     <string name="camera_info_section">KAMERAT</string>
     <string name="camera_count">Kameroita</string>

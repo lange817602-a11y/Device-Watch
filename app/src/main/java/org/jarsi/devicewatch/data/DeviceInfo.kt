@@ -33,6 +33,10 @@ data class DeviceInfo(
     // Battery (static)
     val batteryTechnology: String,
     val batteryCapacityMah: String,
+    // Security
+    val deviceSecure: String,
+    val storageEncryption: String,
+    val usbDebugging: String,
     // Cameras
     val cameraCount: String,
     val rearCamera: String,

@@ -192,6 +192,10 @@
     <string name="device_info_battery_tech">Battery type</string>
     <string name="device_info_battery_capacity">Battery capacity</string>
     <string name="device_info_boot_count">Total restarts</string>
+    <string name="security_info_section">SECURITY</string>
+    <string name="security_screen_lock">Screen lock set</string>
+    <string name="security_storage_encryption">Storage encryption</string>
+    <string name="security_usb_debugging">USB debugging</string>
 
     <string name="camera_info_section">CAMERAS</string>
     <string name="camera_count">Cameras</string>

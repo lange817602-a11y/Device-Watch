@@ -32,7 +32,6 @@ internal fun DeviceTab(uiState: DashboardUiState) {
                 DeviceInfoRow(R.string.device_info_model, info.model)
                 DeviceInfoRow(R.string.device_info_codename, info.codename)
                 DeviceInfoRow(R.string.device_info_android, info.androidVersion)
-                DeviceInfoRow(R.string.device_info_security_patch, info.securityPatch)
                 DeviceInfoRowLong(R.string.device_info_build, info.buildNumber)
                 DeviceInfoRow(R.string.device_info_bootloader, info.bootloader)
                 DeviceInfoRow(R.string.device_info_radio, info.radioVersion)
@@ -50,6 +49,13 @@ internal fun DeviceTab(uiState: DashboardUiState) {
                 DeviceInfoRow(R.string.device_info_storage, info.totalStorage)
                 DeviceInfoRow(R.string.device_info_battery_tech, info.batteryTechnology)
                 DeviceInfoRow(R.string.device_info_battery_capacity, info.batteryCapacityMah)
+            }
+
+            SettingsSectionCard(titleRes = R.string.security_info_section) {
+                DeviceInfoRow(R.string.device_info_security_patch, info.securityPatch)
+                DeviceInfoRow(R.string.security_screen_lock, info.deviceSecure)
+                DeviceInfoRow(R.string.security_storage_encryption, info.storageEncryption)
+                DeviceInfoRow(R.string.security_usb_debugging, info.usbDebugging)
             }
 
             SettingsSectionCard(titleRes = R.string.camera_info_section) {

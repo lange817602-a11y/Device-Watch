@@ -4,6 +4,8 @@ import android.Manifest
 import android.annotation.TargetApi
 import android.app.ActivityManager
 import android.app.AppOpsManager
+import android.app.KeyguardManager
+import android.app.admin.DevicePolicyManager
 import android.app.usage.NetworkStatsManager
 import android.content.Context
 import android.content.Intent
@@ -172,6 +174,9 @@ class SystemStatsRepositoryImpl @Inject constructor(
         val batteryTechnology = batteryIntent?.getStringExtra(BatteryManager.EXTRA_TECHNOLOGY)
             ?.takeIf { it.isNotBlank() } ?: UNAVAILABLE_TEXT
         val batteryCapacityMah = readBatteryCapacityMah()
+        val deviceSecure = readDeviceSecure()
+        val storageEncryption = readStorageEncryption()
+        val usbDebugging = readUsbDebugging()
 
         val camera = readCameraSummary()
         val (sensorCount, sensors) = readSensorSummary()
@@ -215,6 +220,9 @@ class SystemStatsRepositoryImpl @Inject constructor(
             totalStorage = totalStorage,
             batteryTechnology = batteryTechnology,
             batteryCapacityMah = batteryCapacityMah,
+            deviceSecure = deviceSecure,
+            storageEncryption = storageEncryption,
+            usbDebugging = usbDebugging,
             cameraCount = camera.count,
             rearCamera = camera.rear,
             frontCamera = camera.front,
@@ -234,6 +242,38 @@ class SystemStatsRepositoryImpl @Inject constructor(
 
     private fun boolText(value: Boolean): String =
         context.getString(if (value) R.string.common_yes else R.string.common_no)
+
+    private fun readDeviceSecure(): String {
+        val keyguardManager = context.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
+            ?: return UNAVAILABLE_TEXT
+        val secure = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            keyguardManager.isDeviceSecure
+        } else {
+            @Suppress("DEPRECATION")
+            keyguardManager.isKeyguardSecure
+        }
+        return boolText(secure)
+    }
+
+    private fun readStorageEncryption(): String {
+        val devicePolicyManager = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as? DevicePolicyManager
+            ?: return UNAVAILABLE_TEXT
+        return when (devicePolicyManager.storageEncryptionStatus) {
+            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE,
+            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY,
+            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> boolText(true)
+            DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> boolText(false)
+            else -> UNAVAILABLE_TEXT
+        }
+    }
+
+    private fun readUsbDebugging(): String {
+        return try {
+            boolText(Settings.Global.getInt(context.contentResolver, Settings.Global.ADB_ENABLED, 0) != 0)
+        } catch (_: Exception) {
+            UNAVAILABLE_TEXT
+        }
+    }
 
     private fun readBatteryCapacityMah(): String {
         return try {
