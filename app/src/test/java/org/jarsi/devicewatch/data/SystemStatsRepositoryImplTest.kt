@@ -11,7 +11,12 @@ class SystemStatsRepositoryImplTest {
     fun `storage encryption status mapping covers documented states`() {
         assertThat(storageEncryptionStatusTextRes(DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE))
             .isEqualTo(R.string.security_encryption_enabled)
-        assertThat(storageEncryptionStatusTextRes(DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER))
+        assertThat(
+            storageEncryptionStatusTextRes(
+                status = DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER,
+                sdkInt = android.os.Build.VERSION_CODES.N,
+            )
+        )
             .isEqualTo(R.string.security_encryption_enabled)
         assertThat(storageEncryptionStatusTextRes(DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY))
             .isEqualTo(R.string.security_encryption_default_key)
