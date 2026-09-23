@@ -102,6 +102,24 @@ class DashboardViewModelTest {
     }
 
     @Test
+    fun `given device info load, when loading, then security details are exposed`() = runTest(dispatcher) {
+        // Given
+        val viewModel = buildViewModel()
+
+        // When
+        viewModel.loadDeviceInfo()
+        advanceUntilIdle()
+
+        // Then
+        val info = viewModel.uiState.value.deviceInfo
+        assertThat(info).isNotNull()
+        assertThat(info?.securityPatch).isEqualTo("2026-06-01")
+        assertThat(info?.deviceSecure).isEqualTo("Yes")
+        assertThat(info?.storageEncryption).isEqualTo("Encrypted")
+        assertThat(info?.usbDebugging).isEqualTo("No")
+    }
+
+    @Test
     fun `given a dragged opacity, when committing, then it is persisted`() = runTest(dispatcher) {
         // Given
         val widget = FakeWidgetController(installed = true)
@@ -327,7 +345,7 @@ private fun sampleDeviceInfo(): DeviceInfo = DeviceInfo(
     batteryTechnology = "Li-ion",
     batteryCapacityMah = "4492 mAh",
     deviceSecure = "Yes",
-    storageEncryption = "Yes",
+    storageEncryption = "Encrypted",
     usbDebugging = "No",
     cameraCount = "2",
     rearCamera = "64 MP",

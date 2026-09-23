@@ -182,6 +182,8 @@
 
     <string name="common_yes">Yes</string>
     <string name="common_no">No</string>
+    <string name="common_unknown">Unknown</string>
+    <string name="common_unsupported">Unsupported</string>
 
     <string name="device_info_bootloader">Bootloader</string>
     <string name="device_info_radio">Baseband</string>
@@ -196,6 +198,8 @@
     <string name="security_screen_lock">Screen lock set</string>
     <string name="security_storage_encryption">Storage encryption</string>
     <string name="security_usb_debugging">USB debugging</string>
+    <string name="security_encryption_enabled">Encrypted</string>
+    <string name="security_encryption_disabled">Not encrypted</string>
 
     <string name="camera_info_section">CAMERAS</string>
     <string name="camera_count">Cameras</string>

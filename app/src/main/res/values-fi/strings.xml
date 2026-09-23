@@ -180,6 +180,8 @@
 
     <string name="common_yes">Kyllä</string>
     <string name="common_no">Ei</string>
+    <string name="common_unknown">Tuntematon</string>
+    <string name="common_unsupported">Ei tuettu</string>
 
     <string name="device_info_bootloader">Bootloader</string>
     <string name="device_info_radio">Modeemi (baseband)</string>
@@ -194,6 +196,8 @@
     <string name="security_screen_lock">Näytön lukitus asetettu</string>
     <string name="security_storage_encryption">Tallennustilan salaus</string>
     <string name="security_usb_debugging">USB-virheenkorjaus</string>
+    <string name="security_encryption_enabled">Salattu</string>
+    <string name="security_encryption_disabled">Ei salattu</string>
 
     <string name="camera_info_section">KAMERAT</string>
     <string name="camera_count">Kameroita</string>

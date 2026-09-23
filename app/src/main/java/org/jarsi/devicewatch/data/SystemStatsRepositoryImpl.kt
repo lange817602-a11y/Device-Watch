@@ -261,19 +261,16 @@ class SystemStatsRepositoryImpl @Inject constructor(
         return when (devicePolicyManager.storageEncryptionStatus) {
             DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE,
             DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY,
-            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> boolText(true)
-            DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> boolText(false)
-            else -> UNAVAILABLE_TEXT
+            DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER -> context.getString(R.string.security_encryption_enabled)
+            DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE -> context.getString(R.string.security_encryption_disabled)
+            DevicePolicyManager.ENCRYPTION_STATUS_UNSUPPORTED -> context.getString(R.string.common_unsupported)
+            DevicePolicyManager.ENCRYPTION_STATUS_UNKNOWN -> context.getString(R.string.common_unknown)
+            else -> context.getString(R.string.common_unknown)
         }
     }
 
-    private fun readUsbDebugging(): String {
-        return try {
-            boolText(Settings.Global.getInt(context.contentResolver, Settings.Global.ADB_ENABLED, 0) != 0)
-        } catch (_: Exception) {
-            UNAVAILABLE_TEXT
-        }
-    }
+    private fun readUsbDebugging(): String =
+        boolText(Settings.Global.getInt(context.contentResolver, Settings.Global.ADB_ENABLED, 0) != 0)
 
     private fun readBatteryCapacityMah(): String {
         return try {
