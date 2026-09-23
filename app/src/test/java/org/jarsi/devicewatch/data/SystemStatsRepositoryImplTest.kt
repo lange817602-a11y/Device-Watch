@@ -24,7 +24,7 @@ class SystemStatsRepositoryImplTest {
                 sdkInt = android.os.Build.VERSION_CODES.M,
             )
         )
-            .isEqualTo(R.string.security_encryption_default_key)
+            .isEqualTo(R.string.common_unknown)
         assertThat(
             storageEncryptionStatusTextRes(
                 status = DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_DEFAULT_KEY,
